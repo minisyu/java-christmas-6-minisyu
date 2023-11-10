@@ -27,7 +27,7 @@ public class ReservationBuilder {
     }
 
     public ReservationBuilder withVisitDate(String input) {
-        LocalDate visitDate = StringParser.parseInputToInt(input);
+        LocalDate visitDate = StringParser.parseInputToLocalDate(input);
         this.visitDate = visitDate;
         this.isVisitDateNotSet = false;
         return this;

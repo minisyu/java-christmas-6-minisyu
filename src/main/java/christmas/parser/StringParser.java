@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StringParser {
-    public static LocalDate parseInputToInt(String input) {
+    public static LocalDate parseInputToLocalDate(String input) {
         int visitDate = Integer.parseInt(input);
         validateVisitDateRange(visitDate);
         return LocalDate.of(2023, 12, visitDate);

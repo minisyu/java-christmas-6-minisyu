@@ -12,7 +12,7 @@ public class InputView {
      */
     public Reservation inputReservation() {
         ReservationBuilder builder = ReservationBuilder.builder();
-        inputDate(builder);
+        inputVisitDate(builder);
         inputMenuItems(builder);
         return builder.build();
     }
@@ -20,7 +20,7 @@ public class InputView {
     /**
      * 날짜 입력 받기
      */
-    private ReservationBuilder inputDate(ReservationBuilder builder) {
+    private ReservationBuilder inputVisitDate(ReservationBuilder builder) {
         try {
             System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.\n"
                     + "12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
@@ -30,7 +30,7 @@ public class InputView {
             builder.withVisitDate(input);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return inputDate(builder);
+            return inputVisitDate(builder);
         }
         return builder;
     }

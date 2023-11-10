@@ -3,13 +3,24 @@ package christmas.parser;
 import christmas.domain.Menu;
 import christmas.domain.MenuItem;
 import christmas.domain.MenuItems;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StringParser {
-    public static int parseInputToInt(String input) {
+    public static LocalDate parseInputToInt(String input) {
         int visitDate = Integer.parseInt(input);
-        return visitDate;
+        validateVisitDateRange(visitDate);
+        return LocalDate.of(2023, 12, visitDate);
+    }
+
+    /**
+     * 날짜가 1 이상 31 이하의 숫자가 아니면 예외 발생
+     */
+    private static void validateVisitDateRange(int visitDate) {
+        if (visitDate < 1 || visitDate > 31) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        }
     }
 
     /**
@@ -35,5 +46,4 @@ public class StringParser {
         }
         return menuItems;
     }
-
 }

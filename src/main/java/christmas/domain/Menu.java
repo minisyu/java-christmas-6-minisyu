@@ -26,10 +26,28 @@ public enum Menu {
         this.category = category;
     }
 
+    /**
+     * @param input 메뉴명
+     * @return 메뉴명에 해당되는 enum constant 반환
+     * <p>
+     * 해당되는 메뉴명이 없을 시 에외 발생
+     */
     public static Menu from(String input) {
         return Arrays.stream(Menu.values())
                 .filter(menu -> menu.foodName.equals(input))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("해당되는 메뉴가 없습니다."));
+                .orElseThrow(() -> new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."));
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public int getFoodPrice() {
+        return foodPrice;
+    }
+
+    public Category getCategory() {
+        return category;
     }
 }

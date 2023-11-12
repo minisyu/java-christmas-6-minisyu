@@ -12,7 +12,7 @@ import java.util.List;
  * 할인 혜택 금액을 저장한다
  */
 public class DiscountStorage {
-    private final static int SPECIAL_DISCOUNT_PRICE = 1_000;
+    public final static int SPECIAL_DISCOUNT_PRICE = 1_000;
     private final EnumMap<DiscountType, Integer> discountStorage;
 
     public DiscountStorage() {

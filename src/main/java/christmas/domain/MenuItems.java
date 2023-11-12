@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.domain.dto.MenuItemDto;
 import christmas.exception.MenuInputException;
 import java.util.Arrays;
 import java.util.List;
@@ -74,5 +75,27 @@ public class MenuItems {
     private static boolean isAllMenuItemsDrink(List<MenuItem> menuItems) {
         return menuItems.stream()
                 .allMatch(MenuItem::isOfCategoryDrink);
+    }
+
+    /**
+     * 주문한 메뉴들의 총 가격
+     */
+    public int calculateMenuItemsTotalPrice() {
+        return menuItems.stream()
+                .mapToInt(MenuItem::calculateMenuItemPrice)
+                .sum();
+    }
+
+    public List<MenuItem> getMenuItems() {
+        return menuItems;
+    }
+
+    /**
+     * List<MenuItemDto> 생성
+     */
+    public List<MenuItemDto> toMenuItemsDto() {
+        return menuItems.stream()
+                .map(MenuItem::toMenuItemDto)
+                .toList();
     }
 }

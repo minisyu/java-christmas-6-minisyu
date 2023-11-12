@@ -2,6 +2,7 @@ package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.domain.MenuItems;
+import christmas.domain.Order;
 import christmas.domain.Reservation;
 import christmas.domain.date.VisitDate;
 import christmas.validator.InputValidator;
@@ -26,12 +27,22 @@ public class InputView {
     /**
      * 두 개의 입력을 받아서 Reservation 객체 생성하여 반환
      */
+    // v1
     public Reservation inputReservation() {
         System.out.println(START_MESSAGE);
         VisitDate visitDate = retryIfThrow(this::inputVisitDate);
         MenuItems menuItems = retryIfThrow(this::inputMenuItems);
 
         return Reservation.from(menuItems, visitDate);
+    }
+
+    // v2
+    public Order inputReservation2() {
+        System.out.println(START_MESSAGE);
+        VisitDate visitDate = retryIfThrow(this::inputVisitDate);
+        MenuItems menuItems = retryIfThrow(this::inputMenuItems);
+
+        return new Order(menuItems, visitDate);
     }
 
     /**
@@ -50,7 +61,9 @@ public class InputView {
     private MenuItems inputMenuItems() {
         System.out.println(MENU_ITEMS_MESSAGE);
         final String input = readLine();
-        InputValidator.validateMenuItemsInputFormat(input);
+        // imp. ㅠㅠ
+        //  와우! 걍 다 걸려~
+        //InputValidator.validateMenuItemsInputFormat(input);
         return MenuItems.from(input);
     }
 

@@ -47,7 +47,7 @@ public final class VisitDate {
      * @return 크리스마스 디데이 할인액
      */
     public int sumChristmasDiscount() {
-        return 1000 + (100 * visitDate.getDayOfMonth());
+        return 1000 + (100 * (visitDate.getDayOfMonth() - 1));
     }
 
     /**
@@ -71,5 +71,9 @@ public final class VisitDate {
     public boolean isSpecialDay() {
         int dayOfMonth = visitDate.getDayOfMonth();
         return specialDays.contains(dayOfMonth);
+    }
+
+    public int getDate() {
+        return visitDate.getDayOfMonth();
     }
 }

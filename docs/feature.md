@@ -20,22 +20,31 @@
 
 ---
 
-# 책임 설계
+# 설계
 
-## EventManager
+## EventManager ✅
 
 - 할인 적용
 - 증정 이벤트 적용
 - 배지 부여
 
-## DiscountCalculator
+## DiscountStorage (DiscountAggregator) ✅
 
 - 크리스마스 디데이 할인
 - 평일 할인
 - 주말 할인
 - 특별 할인
+- 총 혜택 금액 계산
 
-## Reservation
+## Discounter (DiscountManager) ✅
+
+- 입력한 날짜에 따라 할인 혜택을 적용
+- 크리스마스 디데이 할인 적용
+- 평일 할인 적용
+- 주말 할인 적용
+- 특별 할인 적용
+
+## Order (Reservation)
 
 할인 전 총주문 금액
 메뉴 및 개수

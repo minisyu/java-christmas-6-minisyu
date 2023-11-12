@@ -19,10 +19,10 @@ public class DiscountManager {
      * 입력한 날짜에 따라 할인 혜택을 적용
      */
     public void discount(VisitDate visitDate, MenuItems menuItems) {
-        doChristmasDiscount(visitDate);
-        doWeekdayDiscount(visitDate, menuItems);
-        doWeekendDiscount(visitDate, menuItems);
-        doSpecialDiscount(visitDate);
+        applyChristmasDiscount(visitDate);
+        applyWeekdayDiscount(visitDate, menuItems);
+        applyWeekendDiscount(visitDate, menuItems);
+        applySpecialDiscount(visitDate);
     }
 
     public DiscountStorage getDiscountStorage() {
@@ -32,7 +32,7 @@ public class DiscountManager {
     /**
      * 크리스마스 디데이 할인
      */
-    private void doChristmasDiscount(VisitDate visitDate) {
+    private void applyChristmasDiscount(VisitDate visitDate) {
         if (visitDate.isNotAfter(CHRISTMAS_DAY)) {
             discountStorage.addChristmasDiscountPrice(visitDate);
         }
@@ -41,7 +41,7 @@ public class DiscountManager {
     /**
      * 평일 할인
      */
-    private void doWeekdayDiscount(VisitDate visitDate, MenuItems menuItems) {
+    private void applyWeekdayDiscount(VisitDate visitDate, MenuItems menuItems) {
         if (visitDate.isWeekend()) {
             return;
         }
@@ -54,7 +54,7 @@ public class DiscountManager {
     /**
      * 주말 할인
      */
-    private void doWeekendDiscount(VisitDate visitDate, MenuItems menuItems) {
+    private void applyWeekendDiscount(VisitDate visitDate, MenuItems menuItems) {
         if (visitDate.isWeekday()) {
             return;
         }
@@ -67,7 +67,7 @@ public class DiscountManager {
     /**
      * 특별 할인
      */
-    private void doSpecialDiscount(VisitDate visitDate) {
+    private void applySpecialDiscount(VisitDate visitDate) {
         if (visitDate.isSpecialDay()) {
             discountStorage.addSpecialDisCountPrice(visitDate);
         }

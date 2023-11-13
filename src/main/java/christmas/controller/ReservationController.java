@@ -17,5 +17,7 @@ public class ReservationController {
         // 사용자가 입력한 메뉴와 개수 및 날짜를 입력 받는다
         Reservation reservation = inputView.inputReservation();
 
+        // 이벤트를 적용한다
+        reservation.applyEvents();
     }
 }

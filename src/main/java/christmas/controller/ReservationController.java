@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.Reservation;
+import christmas.domain.dto.ConfirmedReservation;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -19,5 +20,11 @@ public class ReservationController {
 
         // 이벤트를 적용한다
         reservation.applyEvents();
+
+        // 이벤트 혜택 내역을 가져온다
+        ConfirmedReservation confirmedReservation = reservation.toConfirmedReservation();
+
+        // 이벤트 혜택 내역을 출력한다
+        outputView.printEvent(confirmedReservation);
     }
 }

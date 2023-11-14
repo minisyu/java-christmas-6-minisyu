@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 
-/**
- * 할인 혜택 금액을 저장한다
- */
 public class DiscountStorage {
     private final EnumMap<DiscountPolicy, Integer> discountStorage;
 

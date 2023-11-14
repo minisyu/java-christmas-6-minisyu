@@ -6,9 +6,6 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * 예약 날짜
- */
 public class VisitDate {
     public static final int DEFAULT_YEAR = 2023;
     public static final int DEFAULT_MONTH = 12;

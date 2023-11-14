@@ -24,11 +24,10 @@ public enum DiscountPolicy {
     WEEKDAYS("평일 할인") {
         @Override
         public void applyDiscountPolicy(EventData eventData) {
-            // logic
             VisitDate visitDate = eventData.getVisitDate();
             MenuItems menuItems = eventData.getMenuItems();
 
-            if (visitDate.isWeekday()) {
+            if (visitDate.isWeekend()) {
                 return;
             }
 
@@ -46,7 +45,7 @@ public enum DiscountPolicy {
             VisitDate visitDate = eventData.getVisitDate();
             MenuItems menuItems = eventData.getMenuItems();
 
-            if (visitDate.isWeekend()) {
+            if (visitDate.isWeekday()) {
                 return;
             }
 

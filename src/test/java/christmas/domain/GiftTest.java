@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import christmas.domain.dto.EventDto;
@@ -25,8 +25,8 @@ class GiftTest {
         Gift giftForLowPrice = Gift.from(menuItems2);
 
         // then
-        assertEquals(giftForHighPrice, Gift.CHAMPAGNE);
-        assertEquals(giftForLowPrice, Gift.NONE);
+        assertThat(giftForHighPrice).isEqualTo(Gift.CHAMPAGNE);
+        assertThat(giftForLowPrice).isEqualTo(Gift.NONE);
     }
 
 
@@ -43,17 +43,17 @@ class GiftTest {
 
         // then
         assertNotNull(noneGiftDto);
-        assertEquals("없음", noneGiftDto.giftName());
-        assertEquals(0, noneGiftDto.quantity());
+        assertThat(noneGiftDto.giftName()).isEqualTo("없음");
+        assertThat(noneGiftDto.quantity()).isEqualTo(0);
 
         assertNotNull(champagneGiftDto);
-        assertEquals("샴페인", champagneGiftDto.giftName());
-        assertEquals(1, champagneGiftDto.quantity());
+        assertThat(champagneGiftDto.giftName()).isEqualTo("샴페인");
+        assertThat(champagneGiftDto.quantity()).isEqualTo(1);
     }
 
-    @DisplayName("EventDto를 생성하는지 확인")
+    @DisplayName("EventDto로 변환하는지 확인")
     @Test
-    void shouldConvertGiftToEventDto() {
+    void should_Convert_Gift_To_EventDto() {
         // given
         Gift none = Gift.NONE;
         Gift champagne = Gift.CHAMPAGNE;
@@ -64,11 +64,11 @@ class GiftTest {
 
         // then
         assertNotNull(noneEventDto);
-        assertEquals("없음", noneEventDto.eventName());
-        assertEquals(0, noneEventDto.price());
+        assertThat(noneEventDto.eventName()).isEqualTo("증정 이벤트");
+        assertThat(noneEventDto.price()).isEqualTo(0);
 
         assertNotNull(champagneEventDto);
-        assertEquals("샴페인", champagneEventDto.eventName());
-        assertEquals(25_000, champagneEventDto.price());
+        assertThat(champagneEventDto.eventName()).isEqualTo("증정 이벤트");
+        assertThat(champagneEventDto.price()).isEqualTo(25_000);
     }
 }

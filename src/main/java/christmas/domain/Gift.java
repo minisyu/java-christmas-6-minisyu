@@ -8,6 +8,7 @@ public enum Gift {
     CHAMPAGNE("샴페인", 25_000, 1);
 
     private static final int TOTAL_RESERVATION_PRICE = 120_000;
+    private static final String GIFT_EVENT = "증정 이벤트";
     private final String giftName;
     private final int giftPrice;
     private final int quantity;
@@ -46,6 +47,6 @@ public enum Gift {
      * EventDto 생성
      */
     public EventDto toEventDto() {
-        return new EventDto(giftName, giftPrice);
+        return new EventDto(GIFT_EVENT, giftPrice);
     }
 }

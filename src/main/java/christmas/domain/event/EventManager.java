@@ -3,7 +3,6 @@ package christmas.domain.event;
 import christmas.domain.Badge;
 import christmas.domain.Gift;
 import christmas.domain.MenuItems;
-import christmas.domain.date.VisitDate;
 import christmas.domain.discount.DiscountPolicy;
 import christmas.domain.discount.DiscountStorage;
 
@@ -43,14 +42,7 @@ public class EventManager {
     public DiscountStorage getDiscountStorage() {
         return eventData.getDiscountStorage();
     }
-
-    /**
-     * @return eventData에서 날짜를 가져온다
-     */
-    public VisitDate getVisitDate() {
-        return eventData.getVisitDate();
-    }
-
+    
     /**
      * @return eventData에서 MenuItems를 가져온다
      */

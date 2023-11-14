@@ -1,5 +1,6 @@
 package christmas.domain.date;
 
+import christmas.domain.discount.DiscountPolicy;
 import christmas.exception.VisitDateException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -12,10 +13,9 @@ public class VisitDate {
     public static final int DEFAULT_YEAR = 2023;
     public static final int DEFAULT_MONTH = 12;
     public static final List<Integer> specialDays = List.of(3, 10, 17, 24, 25, 31);
-    public static final int INITIAL_CHRISTMAS_PRICE = 1_000;
-    public static final int DAILY_CHRISTMAS_DISCOUNT = 100;
     private static final int MIN_DAY = 1;
     private static final int MAX_DAY = 31;
+
     private final LocalDate visitDate;
 
     private VisitDate(LocalDate visitDate) {
@@ -53,7 +53,8 @@ public class VisitDate {
      */
     public int calculateChristmasDiscount() {
         int daysUntilChristmas = visitDate.getDayOfMonth() - 1;
-        return INITIAL_CHRISTMAS_PRICE + (DAILY_CHRISTMAS_DISCOUNT * (daysUntilChristmas));
+        return DiscountPolicy.INITIAL_CHRISTMAS_PRICE +
+                (DiscountPolicy.DAILY_CHRISTMAS_DISCOUNT * (daysUntilChristmas));
     }
 
     /**

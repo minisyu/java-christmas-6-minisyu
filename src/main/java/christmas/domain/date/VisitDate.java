@@ -44,7 +44,7 @@ public class VisitDate {
      * @param otherDate 다른 날짜
      * @return 다른 날짜를 지나지 않았으면 true, 지났으면 false
      */
-    public boolean isNotAfter(LocalDate otherDate) {
+    public boolean isBeforeOrEqual(LocalDate otherDate) {
         return !visitDate.isAfter(otherDate);
     }
 

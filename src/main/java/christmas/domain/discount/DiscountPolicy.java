@@ -14,7 +14,7 @@ public enum DiscountPolicy {
         public void applyDiscountPolicy(EventData eventData) {
             VisitDate visitDate = eventData.getVisitDate();
 
-            if (visitDate.isNotAfter(CHRISTMAS_DAY)) {
+            if (visitDate.isBeforeOrEqual(CHRISTMAS_DAY)) {
                 int christmasDiscount = visitDate.calculateChristmasDiscount();
                 eventData.addDiscountPrice(CHRISTMAS_D_DAY, christmasDiscount);
             }

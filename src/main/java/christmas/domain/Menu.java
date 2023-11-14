@@ -29,13 +29,7 @@ public enum Menu {
         this.foodPrice = foodPrice;
         this.category = category;
     }
-
-    /**
-     * @param menuName 메뉴명
-     * @return 메뉴명에 해당되는 enum constant 반환
-     * <p>
-     * 해당되는 메뉴명이 없을 시 에외 발생
-     */
+    
     public static Menu from(String menuName) {
         return Arrays.stream(Menu.values())
                 .filter(menu -> menu.foodName.equals(menuName))

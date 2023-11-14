@@ -15,13 +15,7 @@ public class EventData {
         this.menuItems = menuItems;
         this.discountStorage = new DiscountStorage();
     }
-
-    /**
-     * @param discountPolicy 할인 혜택
-     * @param price          할인 금액
-     *                       <p>
-     *                       discountStorage에 할인 금액 저장
-     */
+    
     public void addDiscountPrice(DiscountPolicy discountPolicy, int price) {
         discountStorage.addDiscountPrice(discountPolicy, price);
     }

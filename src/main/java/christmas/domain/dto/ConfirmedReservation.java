@@ -12,7 +12,6 @@ public record ConfirmedReservation(
         // 할인 전 총주문 금액
         int totalPrice,
 
-        // 증정메뉴와 혜택 내역 묶어서 가져올까
         // 증정 메뉴
         GiftDto gift,
 
@@ -21,8 +20,7 @@ public record ConfirmedReservation(
 
         // 총 혜택 금액
         int totalDiscountPrice,
-
-        // OutputView에서 처리할까?
+        
         // 할인 후 예상 결제 금액
         int finalPrice,
 

@@ -19,12 +19,6 @@ public enum Gift {
         this.quantity = quantity;
     }
 
-
-    /**
-     * @param menuItems 사용자가 입력한 메뉴목록과 총 개수
-     * @return 증정 이벤트: 할인 전 총주문 금액이 12만 원 이상일 때, 샴페인 1개 증정
-     */
-
     public static Gift from(MenuItems menuItems) {
         if (menuItems.calculateMenuItemsTotalPrice() >= TOTAL_RESERVATION_PRICE) {
             return CHAMPAGNE;
@@ -36,16 +30,10 @@ public enum Gift {
         return giftPrice;
     }
 
-    /**
-     * GiftDto 생성
-     */
     public GiftDto toGiftDto() {
         return new GiftDto(giftName, quantity);
     }
-
-    /**
-     * EventDto 생성
-     */
+    
     public EventDto toEventDto() {
         return new EventDto(GIFT_EVENT, giftPrice);
     }

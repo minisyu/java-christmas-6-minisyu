@@ -11,11 +11,6 @@ import christmas.domain.event.EventData;
 import christmas.domain.event.EventManager;
 import java.util.List;
 
-/**
- * 예약 내역
- * <p>
- * 주문(할인, 증정, 배지 적용 전 ---처리-->  ReservationDto
- */
 public class Reservation {
     private final VisitDate visitDate;
     private final MenuItems menuItems;
@@ -32,9 +27,6 @@ public class Reservation {
         return new Reservation(visitDate, menuItems);
     }
 
-    /**
-     * 이벤트를 적용한다
-     */
     public void applyEvents() {
         EventData eventData = new EventData(visitDate, menuItems);
         EventManager eventManager = new EventManager(eventData);
@@ -45,34 +37,20 @@ public class Reservation {
         this.badge = eventManager.awardBadge();
     }
 
-    /**
-     * @return 할인 후 예상 결제 금액
-     */
     private int calculateFinalPrice() {
         return menuItems.calculateMenuItemsTotalPrice() - discountStorage.calculateTotalDiscountPrice();
     }
 
-    /**
-     * @return 총 혜택 금액 = 할인 금액의 합계  + 증정 메뉴의 가격
-     */
     private int sumTotalDiscountPrice() {
         return discountStorage.calculateTotalDiscountPrice() + gift.getGiftPrice();
     }
 
-    /**
-     * List<EventDto> 반환
-     * <p>
-     * (할인 혜택 + 증정 이벤트)
-     */
     private List<EventDto> generateEventsDtoWithDiscountAndGift() {
         List<EventDto> eventsDto = discountStorage.toEventsDto();
         eventsDto.add(gift.toEventDto());
         return eventsDto;
     }
-
-    /**
-     * CompletedReservation 생성
-     */
+    
     public ConfirmedReservation toConfirmedReservation() {
         // 날짜
         int confirmedVisitDate = visitDate.getVisitDate();

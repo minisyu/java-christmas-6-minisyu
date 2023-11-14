@@ -1,6 +1,8 @@
 package christmas.domain;
 
 import christmas.domain.dto.BadgeDto;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public enum Badge {
     NONE("없음", 0),
@@ -29,19 +31,10 @@ public enum Badge {
      * 이벤트 배지가 부여되지 않는 경우, "없음"
      */
     public static Badge from(int totalDiscountPrice) {
-        if (totalDiscountPrice >= SANTA.threshold) {
-            return SANTA;
-        }
-
-        if (totalDiscountPrice >= TREE.threshold) {
-            return TREE;
-        }
-
-        if (totalDiscountPrice >= STAR.threshold) {
-            return STAR;
-        }
-
-        return NONE;
+        return Arrays.stream(Badge.values())
+                .filter(badge -> badge.threshold <= totalDiscountPrice)
+                .max(Comparator.naturalOrder())
+                .orElse(NONE);
     }
 
     /**

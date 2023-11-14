@@ -1,10 +1,12 @@
-package christmas.domain;
+package christmas.domain.event;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import christmas.domain.dto.EventDto;
 import christmas.domain.dto.GiftDto;
+import christmas.domain.event.Gift;
+import christmas.domain.reservation.menu.MenuItems;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

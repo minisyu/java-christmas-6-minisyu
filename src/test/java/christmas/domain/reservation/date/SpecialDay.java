@@ -1,4 +1,4 @@
-package christmas.domain.date;
+package christmas.domain.reservation.date;
 
 import java.time.LocalDate;
 

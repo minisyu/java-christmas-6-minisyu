@@ -1,10 +1,10 @@
-package christmas.domain.discount;
+package christmas.domain.event.discount;
 
-import christmas.domain.Category;
-import christmas.domain.MenuItem;
-import christmas.domain.MenuItems;
-import christmas.domain.date.VisitDate;
+import christmas.domain.reservation.menu.Category;
+import christmas.domain.reservation.date.VisitDate;
 import christmas.domain.event.EventData;
+import christmas.domain.reservation.menu.MenuItem;
+import christmas.domain.reservation.menu.MenuItems;
 import java.time.LocalDate;
 
 public enum DiscountPolicy {

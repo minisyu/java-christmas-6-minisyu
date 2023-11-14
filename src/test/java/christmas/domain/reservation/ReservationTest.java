@@ -1,13 +1,16 @@
-package christmas.domain;
+package christmas.domain.reservation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.domain.date.VisitDate;
+import christmas.domain.reservation.Reservation;
+import christmas.domain.reservation.date.VisitDate;
 import christmas.domain.dto.BadgeDto;
 import christmas.domain.dto.ConfirmedReservation;
 import christmas.domain.dto.EventDto;
 import christmas.domain.dto.GiftDto;
 import christmas.domain.dto.MenuItemDto;
+import christmas.domain.reservation.menu.Menu;
+import christmas.domain.reservation.menu.MenuItems;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

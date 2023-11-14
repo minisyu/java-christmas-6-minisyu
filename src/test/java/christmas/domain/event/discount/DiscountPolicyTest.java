@@ -1,11 +1,13 @@
-package christmas.domain.discount;
+package christmas.domain.event.discount;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.domain.MenuItem;
-import christmas.domain.MenuItems;
-import christmas.domain.date.VisitDate;
+import christmas.domain.reservation.date.VisitDate;
 import christmas.domain.event.EventData;
+import christmas.domain.event.discount.DiscountPolicy;
+import christmas.domain.event.discount.DiscountStorage;
+import christmas.domain.reservation.menu.MenuItem;
+import christmas.domain.reservation.menu.MenuItems;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

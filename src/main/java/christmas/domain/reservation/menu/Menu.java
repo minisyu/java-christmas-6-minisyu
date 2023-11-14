@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.reservation.menu;
 
 import christmas.exception.MenuInputException;
 import java.util.Arrays;
@@ -29,7 +29,7 @@ public enum Menu {
         this.foodPrice = foodPrice;
         this.category = category;
     }
-    
+
     public static Menu from(String menuName) {
         return Arrays.stream(Menu.values())
                 .filter(menu -> menu.foodName.equals(menuName))

@@ -1,9 +1,9 @@
 package christmas.domain.event;
 
-import christmas.domain.MenuItems;
-import christmas.domain.date.VisitDate;
-import christmas.domain.discount.DiscountPolicy;
-import christmas.domain.discount.DiscountStorage;
+import christmas.domain.reservation.date.VisitDate;
+import christmas.domain.event.discount.DiscountPolicy;
+import christmas.domain.event.discount.DiscountStorage;
+import christmas.domain.reservation.menu.MenuItems;
 
 public class EventData {
     private final VisitDate visitDate;
@@ -15,7 +15,7 @@ public class EventData {
         this.menuItems = menuItems;
         this.discountStorage = new DiscountStorage();
     }
-    
+
     public void addDiscountPrice(DiscountPolicy discountPolicy, int price) {
         discountStorage.addDiscountPrice(discountPolicy, price);
     }

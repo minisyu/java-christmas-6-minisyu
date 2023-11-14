@@ -1,7 +1,8 @@
-package christmas.domain;
+package christmas.domain.event;
 
 import christmas.domain.dto.EventDto;
 import christmas.domain.dto.GiftDto;
+import christmas.domain.reservation.menu.MenuItems;
 
 public enum Gift {
     NONE("없음", 0, 0),
@@ -33,7 +34,7 @@ public enum Gift {
     public GiftDto toGiftDto() {
         return new GiftDto(giftName, quantity);
     }
-    
+
     public EventDto toEventDto() {
         return new EventDto(GIFT_EVENT, giftPrice);
     }

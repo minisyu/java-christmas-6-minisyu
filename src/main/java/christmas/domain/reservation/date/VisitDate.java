@@ -1,6 +1,6 @@
-package christmas.domain.date;
+package christmas.domain.reservation.date;
 
-import christmas.domain.discount.DiscountPolicy;
+import christmas.domain.event.discount.DiscountPolicy;
 import christmas.exception.VisitDateException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;

@@ -1,10 +1,8 @@
 package christmas.domain.event;
 
-import christmas.domain.Badge;
-import christmas.domain.Gift;
-import christmas.domain.MenuItems;
-import christmas.domain.discount.DiscountPolicy;
-import christmas.domain.discount.DiscountStorage;
+import christmas.domain.event.discount.DiscountPolicy;
+import christmas.domain.event.discount.DiscountStorage;
+import christmas.domain.reservation.menu.MenuItems;
 
 public class EventManager {
     private final EventData eventData;
@@ -46,7 +44,7 @@ public class EventManager {
         int totalDiscountPrice = sumTotalDiscountPrice();
         return Badge.from(totalDiscountPrice);
     }
-    
+
     public int sumTotalDiscountPrice() {
         DiscountStorage discountStorage = getDiscountStorage();
         Gift gift = applyGiftEvent();

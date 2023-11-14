@@ -1,14 +1,17 @@
-package christmas.domain;
+package christmas.domain.reservation;
 
-import christmas.domain.date.VisitDate;
-import christmas.domain.discount.DiscountStorage;
+import christmas.domain.reservation.date.VisitDate;
+import christmas.domain.event.discount.DiscountStorage;
 import christmas.domain.dto.BadgeDto;
 import christmas.domain.dto.ConfirmedReservation;
 import christmas.domain.dto.EventDto;
 import christmas.domain.dto.GiftDto;
 import christmas.domain.dto.MenuItemDto;
+import christmas.domain.event.Badge;
 import christmas.domain.event.EventData;
 import christmas.domain.event.EventManager;
+import christmas.domain.event.Gift;
+import christmas.domain.reservation.menu.MenuItems;
 import java.util.List;
 
 public class Reservation {
@@ -65,7 +68,7 @@ public class Reservation {
         int confirmedTotalDiscountPrice = sumTotalDiscountPrice();
 
         int confirmedFinalPrice = calculateFinalPrice();
-        
+
         BadgeDto confirmedBadge = badge.toBadgeDto();
 
         return new ConfirmedReservation(

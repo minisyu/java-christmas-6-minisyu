@@ -1,9 +1,9 @@
-package christmas.domain.date;
+package christmas.domain.reservation.date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import christmas.domain.discount.DiscountPolicy;
+import christmas.domain.event.discount.DiscountPolicy;
 import christmas.exception.VisitDateException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

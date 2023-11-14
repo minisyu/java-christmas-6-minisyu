@@ -1,4 +1,4 @@
-package christmas.domain.discount;
+package christmas.domain.event.discount;
 
 import christmas.domain.dto.EventDto;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class DiscountStorage {
                 .mapToInt(value -> value)
                 .sum();
     }
-    
+
     public List<EventDto> toEventsDto() {
         List<EventDto> eventsDto = new ArrayList<>();
 

@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.event;
 
 import christmas.domain.dto.BadgeDto;
 import java.util.Arrays;
@@ -24,7 +24,7 @@ public enum Badge {
                 .max(Comparator.naturalOrder())
                 .orElse(NONE);
     }
-    
+
     public BadgeDto toBadgeDto() {
         return new BadgeDto(badgeName);
     }

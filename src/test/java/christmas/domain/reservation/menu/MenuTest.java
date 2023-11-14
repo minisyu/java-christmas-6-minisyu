@@ -1,8 +1,10 @@
-package christmas.domain;
+package christmas.domain.reservation.menu;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import christmas.domain.reservation.menu.Category;
+import christmas.domain.reservation.menu.Menu;
 import christmas.exception.MenuInputException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

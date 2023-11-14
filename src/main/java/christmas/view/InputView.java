@@ -1,9 +1,9 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.domain.MenuItems;
-import christmas.domain.Reservation;
-import christmas.domain.date.VisitDate;
+import christmas.domain.reservation.Reservation;
+import christmas.domain.reservation.date.VisitDate;
+import christmas.domain.reservation.menu.MenuItems;
 import christmas.validator.InputValidator;
 import java.util.function.Supplier;
 
@@ -35,7 +35,7 @@ public class InputView {
         InputValidator.validateMenuItemsInputFormat(input);
         return MenuItems.from(input);
     }
-    
+
     public VisitDate inputVisitDate() {
         System.out.println(VISIT_DATE_MESSAGE);
         String input = readLine();

@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.reservation.menu;
 
 import christmas.domain.dto.MenuItemDto;
 import christmas.exception.MenuInputException;

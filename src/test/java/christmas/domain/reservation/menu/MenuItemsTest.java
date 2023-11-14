@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.reservation.menu;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -6,6 +6,8 @@ import static org.assertj.core.api.Assertions.tuple;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import christmas.domain.dto.MenuItemDto;
+import christmas.domain.reservation.menu.Menu;
+import christmas.domain.reservation.menu.MenuItems;
 import christmas.exception.MenuInputException;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;

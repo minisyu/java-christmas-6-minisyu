@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.reservation.menu;
 
 import christmas.domain.dto.MenuItemDto;
 import christmas.exception.MenuInputException;
@@ -70,7 +70,7 @@ public class MenuItems {
     public List<MenuItem> getMenuItems() {
         return menuItems;
     }
-    
+
     public List<MenuItemDto> toMenuItemsDto() {
         return menuItems.stream()
                 .map(MenuItem::toMenuItemDto)

@@ -1,6 +1,6 @@
 package christmas.controller;
 
-import christmas.domain.Reservation;
+import christmas.domain.reservation.Reservation;
 import christmas.domain.dto.ConfirmedReservation;
 import christmas.view.InputView;
 import christmas.view.OutputView;

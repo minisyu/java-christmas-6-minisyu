@@ -1,7 +1,8 @@
 package christmas.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.tuple;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import christmas.domain.dto.MenuItemDto;
@@ -64,7 +65,7 @@ class MenuItemsTest {
                 Menu.ICE_CREAM.getFoodPrice() +
                 Menu.RED_WINE.getFoodPrice();
 
-        assertEquals(expectedPrice, menuItems.calculateMenuItemsTotalPrice());
+        assertThat(totalPrice).isEqualTo(expectedPrice);
     }
 
     @DisplayName("List<MenuItemDto>를 생성하는지 확인")
@@ -79,21 +80,16 @@ class MenuItemsTest {
 
         // then
         assertNotNull(menuItemsDto);
-        assertEquals(5, menuItemsDto.size());
 
-        assertEquals("타파스", menuItemsDto.get(0).menuName());
-        assertEquals(1, menuItemsDto.get(0).quantity());
-
-        assertEquals("해산물파스타", menuItemsDto.get(1).menuName());
-        assertEquals(2, menuItemsDto.get(1).quantity());
-
-        assertEquals("초코케이크", menuItemsDto.get(2).menuName());
-        assertEquals(1, menuItemsDto.get(2).quantity());
-
-        assertEquals("레드와인", menuItemsDto.get(3).menuName());
-        assertEquals(1, menuItemsDto.get(3).quantity());
-
-        assertEquals("제로콜라", menuItemsDto.get(4).menuName());
-        assertEquals(3, menuItemsDto.get(4).quantity());
+        assertThat(menuItemsDto)
+                .hasSize(5)
+                .extracting(MenuItemDto::menuName, MenuItemDto::quantity)
+                .containsExactly(
+                        tuple("타파스", 1),
+                        tuple("해산물파스타", 2),
+                        tuple("초코케이크", 1),
+                        tuple("레드와인", 1),
+                        tuple("제로콜라", 3)
+                );
     }
 }

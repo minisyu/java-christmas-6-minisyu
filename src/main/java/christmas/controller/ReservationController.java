@@ -15,16 +15,13 @@ public class ReservationController {
     }
 
     public void run() {
-        // 사용자가 입력한 메뉴와 개수 및 날짜를 입력 받는다
         Reservation reservation = inputView.inputReservation();
+        ConfirmedReservation confirmedReservation = applyEvents(reservation);
+        outputView.printReservation(confirmedReservation);
+    }
 
-        // 이벤트를 적용한다
+    private ConfirmedReservation applyEvents(Reservation reservation) {
         reservation.applyEvents();
-
-        // 이벤트 혜택 내역을 가져온다
-        ConfirmedReservation confirmedReservation = reservation.toConfirmedReservation();
-
-        // 이벤트 혜택 내역을 출력한다
-        outputView.printEvent(confirmedReservation);
+        return reservation.toConfirmedReservation();
     }
 }

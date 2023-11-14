@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.domain.dto.BadgeDto;
 import org.junit.jupiter.api.DisplayName;
@@ -24,10 +24,10 @@ class BadgeTest {
         Badge badgeForHighestDiscount = Badge.from(highestDiscount);
 
         // then
-        assertEquals(Badge.NONE, badgeForLowDiscount);
-        assertEquals(Badge.STAR, badgeForModerateDiscount);
-        assertEquals(Badge.TREE, badgeForHighDiscount);
-        assertEquals(Badge.SANTA, badgeForHighestDiscount);
+        assertThat(badgeForLowDiscount).isEqualTo(Badge.NONE);
+        assertThat(badgeForModerateDiscount).isEqualTo(Badge.STAR);
+        assertThat(badgeForHighDiscount).isEqualTo(Badge.TREE);
+        assertThat(badgeForHighestDiscount).isEqualTo(Badge.SANTA);
     }
 
     @DisplayName("BadgeDto를 생성하는지 확인")
@@ -46,9 +46,9 @@ class BadgeTest {
         BadgeDto santaBadgeDto = santa.toBadgeDto();
 
         // then
-        assertEquals("없음", noneBadgeDto.badgeName());
-        assertEquals("별", starBadgeDto.badgeName());
-        assertEquals("트리", treeBadgeDto.badgeName());
-        assertEquals("산타", santaBadgeDto.badgeName());
+        assertThat(noneBadgeDto.badgeName()).isEqualTo("없음");
+        assertThat(starBadgeDto.badgeName()).isEqualTo("별");
+        assertThat(treeBadgeDto.badgeName()).isEqualTo("트리");
+        assertThat(santaBadgeDto.badgeName()).isEqualTo("산타");
     }
 }

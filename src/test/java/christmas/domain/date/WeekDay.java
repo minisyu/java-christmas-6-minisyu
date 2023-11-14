@@ -3,7 +3,6 @@ package christmas.domain.date;
 import java.time.LocalDate;
 
 public enum WeekDay {
-
     DEC_03("2023-12-03"),
     DEC_04("2023-12-04"),
     DEC_05("2023-12-05"),

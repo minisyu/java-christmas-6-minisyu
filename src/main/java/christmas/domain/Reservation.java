@@ -50,30 +50,22 @@ public class Reservation {
         eventsDto.add(gift.toEventDto());
         return eventsDto;
     }
-    
+
     public ConfirmedReservation toConfirmedReservation() {
-        // 날짜
         int confirmedVisitDate = visitDate.getVisitDate();
 
-        // 주문 메뉴 및 개수
         List<MenuItemDto> confirmedMenuItems = menuItems.toMenuItemsDto();
 
-        // 할인 전 총주문 금액
         int confirmedMenuItemsTotalPrice = menuItems.calculateMenuItemsTotalPrice();
 
-        // 증정 메뉴
         GiftDto confirmedGift = gift.toGiftDto();
 
-        // 혜택 내역
         List<EventDto> eventsDto = generateEventsDtoWithDiscountAndGift();
 
-        // 총 혜택 금액
         int confirmedTotalDiscountPrice = sumTotalDiscountPrice();
 
-        // 할인 후 예상 결제 금액
         int confirmedFinalPrice = calculateFinalPrice();
-
-        // 배지
+        
         BadgeDto confirmedBadge = badge.toBadgeDto();
 
         return new ConfirmedReservation(

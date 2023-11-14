@@ -1,6 +1,6 @@
 package christmas.domain.discount;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.domain.MenuItem;
 import christmas.domain.MenuItems;
@@ -23,10 +23,10 @@ class DiscountPolicyTest {
 
         // then
         DiscountStorage discountStorage = eventData.getDiscountStorage();
-        int expectedDiscountPrice = discountStorage.calculateTotalDiscountPrice();
-        int actualDiscountPrice = visitDate.calculateChristmasDiscount();
+        int totalDiscountPrice = discountStorage.calculateTotalDiscountPrice();
+        int expectedDiscountPrice = visitDate.calculateChristmasDiscount();
 
-        assertEquals(expectedDiscountPrice, actualDiscountPrice);
+        assertThat(totalDiscountPrice).isEqualTo(expectedDiscountPrice);
     }
 
     @DisplayName("평일 디저트 할인 적용 여부 확인")
@@ -42,9 +42,9 @@ class DiscountPolicyTest {
 
         // then
         DiscountStorage discountStorage = eventData.getDiscountStorage();
-        int expectedDiscountPrice = discountStorage.calculateTotalDiscountPrice();
+        int totalDiscountPrice = discountStorage.calculateTotalDiscountPrice();
 
-        assertEquals(expectedDiscountPrice, MenuItem.WEEK_DISCOUNT_PRICE * 5);
+        assertThat(totalDiscountPrice).isEqualTo(MenuItem.WEEK_DISCOUNT_PRICE * 5);
     }
 
     @DisplayName("주말 메인 메뉴 할인 적용 여부 확인")
@@ -60,9 +60,9 @@ class DiscountPolicyTest {
 
         // then
         DiscountStorage discountStorage = eventData.getDiscountStorage();
-        int expectedDiscountPrice = discountStorage.calculateTotalDiscountPrice();
+        int totalDiscountPrice = discountStorage.calculateTotalDiscountPrice();
 
-        assertEquals(expectedDiscountPrice, MenuItem.WEEK_DISCOUNT_PRICE);
+        assertThat(totalDiscountPrice).isEqualTo(MenuItem.WEEK_DISCOUNT_PRICE);
     }
 
     @DisplayName("특별 할인 적용 여부 확인")
@@ -78,8 +78,8 @@ class DiscountPolicyTest {
 
         // then
         DiscountStorage discountStorage = eventData.getDiscountStorage();
-        int expectedDiscountPrice = discountStorage.calculateTotalDiscountPrice();
+        int totalDiscountPrice = discountStorage.calculateTotalDiscountPrice();
 
-        assertEquals(expectedDiscountPrice, DiscountPolicy.SPECIAL_DISCOUNT_PRICE);
+        assertThat(totalDiscountPrice).isEqualTo(DiscountPolicy.SPECIAL_DISCOUNT_PRICE);
     }
 }

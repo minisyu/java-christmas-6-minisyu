@@ -4,7 +4,7 @@ import christmas.domain.Badge;
 import christmas.domain.Gift;
 import christmas.domain.MenuItems;
 import christmas.domain.date.VisitDate;
-import christmas.domain.discount.DiscountManager;
+import christmas.domain.discount.DiscountPolicy;
 import christmas.domain.discount.DiscountStorage;
 
 /**
@@ -16,15 +16,11 @@ import christmas.domain.discount.DiscountStorage;
  * <p>
  * 이후 처리된 데이터를 Reservation에 반환
  */
-public class EventCoordinator {
-    private final VisitDate visitDate;
-    private final MenuItems menuItems;
-    private final DiscountManager discountManager = new DiscountManager();
-    //private final DiscountManager discountManager;
+public class EventManager {
+    private final EventData eventData;
 
-    public EventCoordinator(VisitDate visitDate, MenuItems menuItems) {
-        this.visitDate = visitDate;
-        this.menuItems = menuItems;
+    public EventManager(EventData eventData) {
+        this.eventData = eventData;
     }
 
     /**
@@ -34,20 +30,39 @@ public class EventCoordinator {
         if (isNotEventAvailable()) {
             return;
         }
-        discountManager.discount(visitDate, menuItems);
+
+        DiscountPolicy.CHRISTMAS_D_DAY.applyDiscountPolicy(eventData);
+        DiscountPolicy.WEEKDAYS.applyDiscountPolicy(eventData);
+        DiscountPolicy.WEEKEND.applyDiscountPolicy(eventData);
+        DiscountPolicy.SPECIAL.applyDiscountPolicy(eventData);
     }
 
     /**
-     * @return 할인 금액을 가져온다
+     * @return eventData에서 할인 금액을 가져온다
      */
     public DiscountStorage getDiscountStorage() {
-        return discountManager.getDiscountStorage();
+        return eventData.getDiscountStorage();
+    }
+
+    /**
+     * @return eventData에서 날짜를 가져온다
+     */
+    public VisitDate getVisitDate() {
+        return eventData.getVisitDate();
+    }
+
+    /**
+     * @return eventData에서 MenuItems를 가져온다
+     */
+    public MenuItems getMenuItems() {
+        return eventData.getMenuItems();
     }
 
     /**
      * @return 10, 000원 이상이면 true, 아니면 false
      */
     private boolean isNotEventAvailable() {
+        MenuItems menuItems = getMenuItems();
         return menuItems.calculateMenuItemsTotalPrice() < 10_000;
     }
 
@@ -55,6 +70,7 @@ public class EventCoordinator {
      * 증정 이밴트를 진행한다
      */
     public Gift applyGiftEvent() {
+        MenuItems menuItems = getMenuItems();
         return Gift.from(menuItems);
     }
 
@@ -71,7 +87,7 @@ public class EventCoordinator {
      * @return 총 혜택 금액 = 할인 금액의 합계  + 증정 메뉴의 가격
      */
     public int sumTotalDiscountPrice() {
-        DiscountStorage discountStorage = discountManager.getDiscountStorage();
+        DiscountStorage discountStorage = getDiscountStorage();
         Gift gift = applyGiftEvent();
         return discountStorage.calculateTotalDiscountPrice() + gift.getGiftPrice();
     }

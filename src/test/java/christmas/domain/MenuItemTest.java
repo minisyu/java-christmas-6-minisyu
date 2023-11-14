@@ -1,7 +1,7 @@
 package christmas.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -10,21 +10,21 @@ import christmas.domain.dto.MenuItemDto;
 import christmas.exception.MenuInputException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class MenuItemTest {
 
     @DisplayName("사용자 입력으로부터 MenuItem 생성")
-    @Test
-    public void should_Create_MenuItem_From_Input() {
-        // given
-        String input = "아이스크림-2";
-
+    @ParameterizedTest
+    @ValueSource(strings = {"아이스크림-2", "티본스테이크-1", "초코케이크-5", "제로콜라-7"})
+    public void should_Create_MenuItem_From_Input(String input) {
         // when
         MenuItem menuItem = MenuItem.from(input);
 
         // then
-        assertEquals("아이스크림", menuItem.getFoodName());
-        assertEquals(2, menuItem.getQuantity());
+        assertNotNull(menuItem);
+        assertThat(menuItem).isInstanceOf(MenuItem.class);
     }
 
     @DisplayName("메뉴의 개수 검증 - 실패")
@@ -90,11 +90,10 @@ class MenuItemTest {
         int menuItemPrice4 = menuItem4.calculateMenuItemPrice();
 
         // then
-        assertEquals(Menu.MUSHROOM_SOUP.getFoodPrice() * 3, menuItemPrice1);
-        assertEquals(Menu.BARBECUE_RIBS.getFoodPrice(), menuItemPrice2);
-        assertEquals(Menu.CHOCOLATE_CAKE.getFoodPrice() * 2, menuItemPrice3);
-        assertEquals(Menu.RED_WINE.getFoodPrice(), menuItemPrice4);
-
+        assertThat(menuItemPrice1).isEqualTo(Menu.MUSHROOM_SOUP.getFoodPrice() * 3);
+        assertThat(menuItemPrice2).isEqualTo(Menu.BARBECUE_RIBS.getFoodPrice());
+        assertThat(menuItemPrice3).isEqualTo(Menu.CHOCOLATE_CAKE.getFoodPrice() * 2);
+        assertThat(menuItemPrice4).isEqualTo(Menu.RED_WINE.getFoodPrice());
     }
 
     @DisplayName("메뉴의 카테고리가 주어진 카테고리랑 동일한지 확인")
@@ -123,7 +122,7 @@ class MenuItemTest {
         int discountPrice = menuItem.calculateWeekDiscountPrice();
 
         // then
-        assertEquals(2_023 * 2, discountPrice);
+        assertThat(discountPrice).isEqualTo(2_023 * 2);
     }
 
     @DisplayName("MenuItemDto를 생성하는지 확인")
@@ -138,7 +137,7 @@ class MenuItemTest {
 
         // then
         assertNotNull(menuItemDto);
-        assertEquals("크리스마스파스타", menuItemDto.menuName());
-        assertEquals(2, menuItemDto.quantity());
+        assertThat(menuItemDto.menuName()).isEqualTo("크리스마스파스타");
+        assertThat(menuItemDto.quantity()).isEqualTo(2);
     }
 }

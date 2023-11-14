@@ -1,7 +1,7 @@
 package christmas.controller;
 
-import christmas.domain.reservation.Reservation;
 import christmas.domain.dto.ConfirmedReservation;
+import christmas.domain.reservation.Reservation;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -17,7 +17,7 @@ public class ReservationController {
     public void run() {
         Reservation reservation = inputView.inputReservation();
         ConfirmedReservation confirmedReservation = applyEvents(reservation);
-        outputView.printReservation(confirmedReservation);
+        outputView.printBenefitEvents(confirmedReservation);
     }
 
     private ConfirmedReservation applyEvents(Reservation reservation) {

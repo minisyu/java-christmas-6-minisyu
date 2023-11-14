@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
-    public void printReservation(ConfirmedReservation confirmedReservation) {
+    public void printBenefitEvents(ConfirmedReservation confirmedReservation) {
         System.out.print(createReservationMessage(confirmedReservation));
     }
 

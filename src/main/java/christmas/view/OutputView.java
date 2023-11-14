@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class OutputView {
 
     public void printReservation(ConfirmedReservation confirmedReservation) {
-        System.out.println(createReservationMessage(confirmedReservation));
+        System.out.print(createReservationMessage(confirmedReservation));
     }
 
     public String createReservationMessage(ConfirmedReservation confirmedReservation) {

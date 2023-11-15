@@ -36,7 +36,7 @@ class InputValidatorTest {
 
     @DisplayName("메뉴와 개수 입력 형식 유효성 검사 - 실패")
     @ParameterizedTest
-    @ValueSource(strings = {"아이스크림-2,티본스테이크", "아이스크림-2,티본스테이크-1,", ",아이스크림-2"})
+    @ValueSource(strings = {"아이스크림-2,티본스테이크", "아이스크림-2,티본스테이크-1,", ",아이스크림-2", "아이스크림-2|티본스테이크-2"})
     public void should_Throw_Exception_For_Invalid_MenuItems_Input_Format(String input) {
         // when
         // then

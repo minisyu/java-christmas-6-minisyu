@@ -2,13 +2,12 @@ package christmas.domain.reservation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.domain.reservation.Reservation;
-import christmas.domain.reservation.date.VisitDate;
 import christmas.domain.dto.BadgeDto;
 import christmas.domain.dto.ConfirmedReservation;
 import christmas.domain.dto.EventDto;
 import christmas.domain.dto.GiftDto;
 import christmas.domain.dto.MenuItemDto;
+import christmas.domain.reservation.date.VisitDate;
 import christmas.domain.reservation.menu.Menu;
 import christmas.domain.reservation.menu.MenuItems;
 import java.util.List;
@@ -39,32 +38,24 @@ class ReservationTest {
         // then
         assertThat(confirmedReservation).isNotNull();
 
-        // 날짜
         assertThat(confirmedReservation.visitDate()).isEqualTo(25);
 
-        // 주문 메뉴 및 개수
         List<MenuItemDto> expectedMenuItems = createMenuItemsDto();
         assertThat(confirmedReservation.menuItems()).isEqualTo(expectedMenuItems);
 
-        // 할인 전 총주문 금액
         int totalMenuItemsPrice = getTotalMenuItemsPrice();
         assertThat(confirmedReservation.totalPrice()).isEqualTo(totalMenuItemsPrice);
 
-        // 증정 메뉴
         GiftDto expectedGift = new GiftDto("샴페인", 1);
         assertThat(confirmedReservation.gift()).isEqualTo(expectedGift);
 
-        // 혜택 내역
         List<EventDto> expectedEvents = createEventsDto();
         assertThat(confirmedReservation.events()).isEqualTo(expectedEvents);
 
-        // 총 혜택 금액
         assertThat(confirmedReservation.totalDiscountPrice()).isEqualTo(33_446);
 
-        // 할인 후 예상 결제 금액
         assertThat(confirmedReservation.finalPrice()).isEqualTo(128_554);
 
-        // 배지
         BadgeDto expectedBadge = new BadgeDto("산타");
         assertThat(confirmedReservation.badge()).isEqualTo(expectedBadge);
     }

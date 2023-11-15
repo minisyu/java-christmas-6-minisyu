@@ -1,7 +1,5 @@
 package christmas.domain.reservation;
 
-import christmas.domain.reservation.date.VisitDate;
-import christmas.domain.event.discount.DiscountStorage;
 import christmas.domain.dto.BadgeDto;
 import christmas.domain.dto.ConfirmedReservation;
 import christmas.domain.dto.EventDto;
@@ -11,6 +9,8 @@ import christmas.domain.event.Badge;
 import christmas.domain.event.EventData;
 import christmas.domain.event.EventManager;
 import christmas.domain.event.Gift;
+import christmas.domain.event.discount.DiscountStorage;
+import christmas.domain.reservation.date.VisitDate;
 import christmas.domain.reservation.menu.MenuItems;
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class Reservation {
         return discountStorage.calculateTotalDiscountPrice() + gift.getGiftPrice();
     }
 
-    private List<EventDto> generateEventsDtoWithDiscountAndGift() {
+    private List<EventDto> generateEventsDto() {
         List<EventDto> eventsDto = discountStorage.toEventsDto();
         eventsDto.add(gift.toEventDto());
         return eventsDto;
@@ -63,7 +63,7 @@ public class Reservation {
 
         GiftDto confirmedGift = gift.toGiftDto();
 
-        List<EventDto> eventsDto = generateEventsDtoWithDiscountAndGift();
+        List<EventDto> eventsDto = generateEventsDto();
 
         int confirmedTotalDiscountPrice = sumTotalDiscountPrice();
 

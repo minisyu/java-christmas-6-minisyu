@@ -42,5 +42,5 @@ public class ViewConstants {
                         
             <12월 이벤트 배지>
             %s
-            """;
+            """.trim();
 }

@@ -1,9 +1,8 @@
 package christmas.domain.event.discount;
 
-import christmas.domain.reservation.menu.Category;
-import christmas.domain.reservation.date.VisitDate;
 import christmas.domain.event.EventData;
-import christmas.domain.reservation.menu.MenuItem;
+import christmas.domain.reservation.date.VisitDate;
+import christmas.domain.reservation.menu.Category;
 import christmas.domain.reservation.menu.MenuItems;
 import java.time.LocalDate;
 
@@ -20,7 +19,7 @@ public enum DiscountPolicy {
             }
         }
     },
-
+    
     WEEKDAYS("평일 할인") {
         @Override
         public void applyDiscountPolicy(EventData eventData) {
@@ -31,11 +30,9 @@ public enum DiscountPolicy {
                 return;
             }
 
-            for (MenuItem menuItem : menuItems.getMenuItems()) {
-                if (menuItem.isSameCategory(Category.DESSERT)) {
-                    eventData.addDiscountPrice(WEEKDAYS, menuItem.calculateWeekDiscountPrice());
-                }
-            }
+            menuItems.getMenuItems().stream()
+                    .filter(menuItem -> menuItem.isSameCategory(Category.DESSERT))
+                    .forEach(menuItem -> eventData.addDiscountPrice(WEEKDAYS, menuItem.calculateWeekDiscountPrice()));
         }
     },
 
@@ -49,11 +46,9 @@ public enum DiscountPolicy {
                 return;
             }
 
-            for (MenuItem menuItem : menuItems.getMenuItems()) {
-                if (menuItem.isSameCategory(Category.MAINDISH)) {
-                    eventData.addDiscountPrice(WEEKEND, menuItem.calculateWeekDiscountPrice());
-                }
-            }
+            menuItems.getMenuItems().stream()
+                    .filter(menuItem -> menuItem.isSameCategory(Category.MAINDISH))
+                    .forEach(menuItem -> eventData.addDiscountPrice(WEEKEND, menuItem.calculateWeekDiscountPrice()));
         }
     },
 
